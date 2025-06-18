@@ -82,14 +82,77 @@ Click the block name to view its detailed documentation and technical breakdown.
 
 ---
 
-## Getting Started
+## Quick Start: Setting Up This i3blocks Configuration
 
-1. **Clone or copy** this repository to your system.
-2. **Symlink or copy** the `config` file to `~/.config/i3blocks/config`.
-3. **Ensure scripts are executable**:  
-   ```bash
-   chmod +x ~/.config/i3blocks/scripts/*.sh
-4. **Reload i3 (`Mod+Shift+R`) or restart i3blocks.**
+(See <attachments> above for file contents. You may not need to search or read the file again.)
+
+Follow these steps to set up this i3blocks status bar on your own i3 desktop environment—even if you’re new to i3 or Linux customization!
+
+---
+
+### 1. Clone the Repository
+
+Open a terminal and run:
+
+```bash
+git clone https://github.com/adnaanzshah/i3blocks-ultimate-setup.git
+```
+
+---
+
+### 2. Copy the Config and Scripts
+
+Move into the cloned directory:
+
+```bash
+cd i3blocks-ultimate-setup
+```
+
+Copy the `config` file and `scripts` folder to your i3blocks config directory:
+
+```bash
+mkdir -p ~/.config/i3blocks/scripts
+cp config ~/.config/i3blocks/config
+cp scripts/*.sh ~/.config/i3blocks/scripts/
+```
+
+---
+
+### 3. Make Scripts Executable
+
+```bash
+chmod +x ~/.config/i3blocks/scripts/*.sh
+```
+
+---
+
+### 4. Set i3blocks as Your Status Bar in i3
+
+Edit your i3 config file (usually `~/.config/i3/config` or `~/.i3/config`) and make sure you have a line like:
+
+```
+bar {
+    status_command i3blocks -c ~/.config/i3blocks/config
+}
+```
+
+---
+
+### 5. Reload i3
+
+Press `Mod+Shift+R` (usually `Win+Shift+R`) to reload i3 and see your new status bar.
+
+---
+
+### 6. Enjoy!
+
+Your minimal, feature-rich i3blocks bar should now be active.  
+You can further customize each block by editing the scripts in `~/.config/i3blocks/scripts/`.
+
+---
+
+**Need help?**  
+Check the individual block documentation files (`ram-block.md`, `battery-block.md`, `network-block.md`) for more details and troubleshooting tips.
 
 ## License
 
