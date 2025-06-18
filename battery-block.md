@@ -1,10 +1,10 @@
 # Battery Block
 
-This block provides a comprehensive view of your battery status, health, and time remaining, all in your i3blocks bar.
+A smart, minimal i3blocks module that shows your battery's real-time status, health, and time remaining, with dynamic cycling and color-coded icons.
 
 ---
 
-## What Does It Show?
+## What This Block Shows
 
 - **Battery percentage**
 - **Charging/discharging status**
@@ -16,42 +16,27 @@ This block provides a comprehensive view of your battery status, health, and tim
 
 ## How It Works
 
-The script reads battery data from `/sys/class/power_supply/BAT*` and logs recent changes to estimate time remaining. It cycles through different info (status, health, time) every 30 seconds for a dynamic display.
-
-**Icons** change based on status (charging, full, low, etc.), and colors indicate battery level.
+- Reads battery data from `/sys/class/power_supply/BAT*`.
+- Calculates percentage and health.
+- Logs recent changes to estimate time remaining.
+- Cycles between status, health, and time every 30 seconds.
+- Chooses color and icon based on status and level.
 
 ---
 
-## Technical Walkthrough
+## Example Output
 
-- **Reads battery info**:  
-  - `charge_now`, `charge_full`, `charge_full_design`, `status`
-- **Calculates**:  
-  - Percentage: `100 * charge_now / charge_full`
-  - Health: `(charge_full / charge_full_design) * 100`
-- **Logs changes** to estimate time remaining
-- **Cycles display** every 30 seconds
-- **Chooses color**:  
-  - Green (≥80%)  
-  - Blue (30–79%)  
-  - Red (<30%)
+```
+🔋 78% | 3h 12m left
+#44aaff
+```
 
 ---
 
 ## Resource Usage
-
 - **CPU:** ~0.1% (runs once per second)
 - **RAM:** <1MB
 
 ---
 
-## Example Output
-🔋 78% | 3h 12m left #44aaff
-
-
----
-
-## Customization
-
-You can change icons, colors, or cycling interval by editing the script.  
-See `scripts/battery.sh` for details.
+*For customization, edit `scripts/battery.sh`.*

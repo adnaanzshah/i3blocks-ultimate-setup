@@ -1,59 +1,42 @@
 # RAM Block
 
-This block displays real-time memory (RAM) usage in your i3blocks status bar, using color-coding for quick visual feedback.
+A minimal, efficient i3blocks module that displays your system's real-time memory usage with clear color-coded feedback.
 
 ---
 
-## What Does It Show?
+## What This Block Shows
 
-- **Current RAM usage** as a percentage.
-- **Used and total memory** (in MB or GB, depending on your system).
-- **Color-coded**:  
-  - Green for low usage (<50%)  
-  - Blue for moderate usage (50–80%)  
-  - Red for high usage (≥80%)
+- **Current RAM usage** as a percentage
+- **Used and total memory** (in MB or GB)
+- **Color-coded status**:
+  - Green: <50% usage
+  - Blue: 50–80% usage
+  - Red: ≥80% usage
 
 ---
 
 ## How It Works
 
-The script reads memory statistics using the `free` command and processes the output with `awk`. It calculates the percentage of memory used and formats the output for clarity. If your system has more than 1GB RAM, values are shown in GB with one decimal; otherwise, MB is used.
-
-**Color selection** is based on usage percentage, making it easy to spot when your system is under heavy load.
+- Reads memory stats using `free -m` and `awk`.
+- Calculates usage percentage.
+- Chooses color based on usage.
+- Displays values in GB if total RAM ≥ 1GB, otherwise MB.
 
 ---
 
-## Technical Walkthrough
+## Example Output
 
-- **Reads memory info**:  
-  `free -m | awk '/^Mem:/ {print $2, $3}'`  
-  (Gets total and used memory in MB.)
-- **Calculates usage percentage**:  
-  `percent=$(( 100 * used / total ))`
-- **Chooses color**:  
-  - `<50%` → green  
-  - `50–80%` → blue  
-  - `≥80%` → red
-- **Formats output**:  
-  - If total ≥ 1024 MB, shows GB (e.g., `3.8 GB / 7.7 GB`)
-  - Otherwise, shows MB
+```
+[42%] 3.8 GB / 7.7 GB
+#44aaff
+```
 
 ---
 
 ## Resource Usage
-
 - **CPU:** ~0.1% (runs once per second)
 - **RAM:** <1MB
 
 ---
 
-## Example Output
-[42%] 3.8 GB / 7.7 GB #44aaff
-
-
----
-
-## Customization
-
-You can adjust the color thresholds or formatting by editing the script.  
-For more details, see the script source in `scripts/ram.sh`.
+*For customization, edit `scripts/ram.sh`.*
