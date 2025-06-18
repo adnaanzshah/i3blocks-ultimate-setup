@@ -1,0 +1,47 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+# Global properties
+font size = 40
+separator=true
+separator_block_width=15
+
+#[documentation]
+#full_text=Documentation
+#website=https://vivien.github.io/i3blocks
+#command=xdg-open "$website"
+#color=#f12711
+
+
+[greetings]
+#color=#f5af19
+color=#44aaff
+#command=echo "Hello, $USER!"
+command=echo "Adnaan Shah"
+interval=once
+
+[mem]
+command=~/.config/i3blocks/scripts/ram.sh
+interval=1
+label=MEM: 
+
+[battery]
+command=~/.config/i3blocks/scripts/battery.sh
+interval=1
+label=
+
+[network]
+command=~/.config/i3blocks/scripts/network.sh
+interval=1
+label= 
+
+
+
+
+[time]
+command=date '+%I:%M:%S %p %Y-%m-%d'
+interval=1
